@@ -1,0 +1,57 @@
+#On this occasion I wanted to make an insane code about a job that my dad asked me to do, 
+# for a registration of some students in his job as rector, 
+# that's why I decided to make the student registration code and then show it to you
+
+import os
+
+student_records = {}
+
+def register_student():
+    os.system('cls')
+    name = input('Enter the student name: ')
+    age = input('Enter the student age: ')
+    grade = input('Enter the student grade: ')
+    student_records[name] = {'Age': age, 'Grade': grade}
+    print(' registered successfully.')
+
+def search_by_name():
+    os.system('cls')
+    name = input('Enter the name of the student to search: ')
+    if name in student_records:
+        print('Student information:')
+        print('Name:', name)
+        print('Age:', student_records[name]['Age'])
+        print('Grade:', student_records[name]['Grade'])
+    else:
+        print('Student not found.')
+
+def search_by_grade():
+    os.system('cls')
+    grade = input('Enter the grade of the students to search: ')
+    students_in_grade = [name for name, info in student_records.items() if info['Grade'] == grade]
+    if students_in_grade:
+        print('Students in grade', grade + ':')
+        for name in students_in_grade:
+            print(name)
+    else:
+        print('No students found in that grade.')
+
+while True:
+    os.system('cls')
+    print('\n1. Register student')
+    print('2. Search student by name')
+    print('3. Search students by grade')
+    print('4. Exit')
+    option = input('Select an option: ')
+
+    if option == '1':
+        register_student()
+    elif option == '2':
+        search_by_name()
+    elif option == '3':
+        search_by_grade()
+    elif option == '4':
+        print('so long...')
+        break
+    else:
+        enter = input('insane mistake. retrum <Enter> ')
